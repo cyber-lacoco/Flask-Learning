@@ -1,20 +1,10 @@
-{% extends "bootstrap/base.html" %}
-{% block title %}Flasky{% endblock %}
-{% block navbar %}
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-          <img alt="Brand" src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" width="7%">
-        </a>
-      </div>
-    </div>
-  </nav>
-{% endblock %}
-{% block content %}
-<div class="container">
- <div class="page-header">
- <h1>Hello, {{ Name }}!</h1>
- </div>
-</div>
-{% endblock %}
+<h1>Hello {{name|title}}</h1>
+<p>Testing Jinja2 Engine: {{stuff|trim}} </p>
+<h2>Favorite Pizza</h2>
+{%for toppin in favorite_pizza%} <!--Single curly Brackets are used for Logics-->
+    {% if toppin == 41 %}
+        {{toppin + 100 }}
+    {%else%}
+        {{favorite_pizza.1}}</br> <!--Double Curly Brackets are used for Functionals Variables,Data,Lists and Dictionaries-->
+    {%endif%}
+{%endfor%}
