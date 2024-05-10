@@ -1,8 +1,7 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, flash, url_for
 from flask_wtf import FlaskForm #Imported Flask Form
 from wtforms import StringField, SubmitField #String field an Submit Field handles Input and Button actions of a form
-from wtforms.validators import DataRequired #Tho validate Data
-
+from wtforms.validators import DataRequired #To validate Data
 
 #Creating a flask Instance
 app = Flask(__name__) 
@@ -14,12 +13,11 @@ class NamerForm(FlaskForm): #Created a class Nameform to inherit FlaskForm
     name = StringField("What's your Name", validators=[DataRequired()])
     submit = SubmitField("Submit")
 
-
 #working with Jinja2 Engine
 name = "Satar"
 @app.route('/') #Created a route decorator
 def home():
-    name = 'Satar'
+    name = 'Satar' 
     stuff = "this is a strong tag "
     favorite_pizza = ["Pepperoni", "Cheese", "Mushrooms", 41]
     return render_template('index.html', name=name, stuff=stuff, favorite_pizza=favorite_pizza)
@@ -37,7 +35,8 @@ def user2():
    if form.validate_on_submit():
       name = form.name.data
       form.name.data = ''
-   return render_template('name.html', name=name, form=form)
+      flash("Form submitted successfully")
+   return render_template('name.html',  form=form, name=name)
 
 #Custom Error Pages
 #Invalid Url
