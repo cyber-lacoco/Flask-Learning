@@ -47,10 +47,8 @@ def add_user():
       if user is None:
          user = Users(name=form.name.data, email=form.email.data)
          db.session.add(user)
-         db.session.commit()
+         db.session.commit() 
       name = form.name.data
-      form.name.data = ''
-      form.email.data = ''
       flash('User added Successfully')
    our_users = Users.query.order_by(Users.date_added)
    return render_template('add_user.html', 
