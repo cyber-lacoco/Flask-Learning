@@ -7,9 +7,12 @@ from datetime import datetime #Cntracting time they're added
 
 
 #Creating a flask Instance
-app = Flask(__name__) 
+app = Flask(__name__)
+#Old sqlite Db 
 #Adding a database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+#MySQL DB
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:admin@localhost/our_users'
 #Created a secret key to Implement CSRF[Created an Environment variable called SECRET_KEY and added to app.config]
 app.config['SECRET_KEY'] = "My Super Secrete Key" #CSRF Validation Key
 #Initialize The Database
